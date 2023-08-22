@@ -1,4 +1,5 @@
-import 'package:digiblock_network_task/screens/home/base.dart/tabs.dart';
+import 'package:digiblock_network_task/screens/base.dart/tabs.dart';
+import 'package:digiblock_network_task/screens/home/flights/flights.dart';
 import 'package:digiblock_network_task/screens/home/stays/stays.dart';
 import 'package:digiblock_network_task/util/dimensions.dart';
 import 'package:digiblock_network_task/util/styles.dart';
@@ -25,9 +26,13 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(120.0),
+        
+          preferredSize: const Size.fromHeight(120.0),
           child: AppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: Colors.blue,
             title: Text('Booking.com',
                 style: robotoBold.copyWith(
@@ -35,33 +40,31 @@ class _HomeScreenState extends State<HomeScreen>
                     color: Theme.of(context).cardColor)),
             actions: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  child: Stack(
-                    children: [
-                      const Icon(
-                        Icons.notifications_none,
-                        size: 30,
-                      ),
-                      Positioned(
-                          top: 0,
-                          right: 0,
-                          child: Container(
-                            width: 15,
-                            decoration: const BoxDecoration(
-                                color: Colors.red, shape: BoxShape.circle),
-                            child: Center(
-                              child: Text('1'),
-                            ),
-                          )),
-                    ],
-                  ),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Stack(
+                  children: [
+                     Icon(
+                      Icons.notifications_none,color: Theme.of(context).cardColor,
+                      size: 30,
+                    ),
+                    Positioned(
+                        top: 0,
+                        right: 0,
+                        child: Container(
+                          width: 15,
+                          decoration: const BoxDecoration(
+                              color: Colors.red, shape: BoxShape.circle),
+                          child: const Center(
+                            child: Text('1'),
+                          ),
+                        )),
+                  ],
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: Icon(
-                  Icons.person,
+                  Icons.person,color: Theme.of(context).cardColor,
                   size: 30,
                 ),
               ),
@@ -69,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen>
                 padding: EdgeInsets.only(right: 20),
                 child: IconButton(
                     onPressed: () {},
-                    icon: Icon(size: 30, CupertinoIcons.line_horizontal_3)),
+                    icon: Icon(size: 30, CupertinoIcons.line_horizontal_3,color: Theme.of(context).cardColor,)),
               ),
             ],
             bottom: TabBar(
@@ -102,11 +105,8 @@ class _HomeScreenState extends State<HomeScreen>
           )),
       body: TabBarView(controller: _tabController, children: [
         StaysScreen(),
-        StaysScreen(),
-        StaysScreen(),
-        StaysScreen(),
-        StaysScreen(),
-        StaysScreen()
+        FlightScreen(),
+       Container(),Container(),Container(),Container()
       ]),
     );
   }

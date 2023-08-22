@@ -1,4 +1,4 @@
-import 'package:digiblock_network_task/controlls/home_controller.dart';
+import 'package:digiblock_network_task/controlls/stays_controller.dart';
 import 'package:digiblock_network_task/util/dimensions.dart';
 import 'package:digiblock_network_task/util/images.dart';
 import 'package:digiblock_network_task/util/styles.dart';
@@ -70,34 +70,43 @@ class _StaysScreenState extends State<StaysScreen> {
                       color: Colors.yellow.shade600,
                       thickness: 5,
                     ),
-                    Container(
-                      height: 45,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            child: Column(
+                  GetBuilder<StaysController>(
+                      builder: (c) {
+                        return InkWell(
+                          onTap: () {
+                            c.selectDate(context);
+                          },
+                          child: Container(
+                            height: 45,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text('check-in date'),
-                                Text('mon 21 Aug 2023',style: robotoBold,)
+                                Container(
+                                  child: Column(
+                                    children: [
+                                      Text('check-in date'),
+                                      Text(c.formatDate(c.date),style: robotoBold,)
+                                    ],
+                                  ),
+                                ),
+                                VerticalDivider(
+                                    thickness: 5,
+                                    color: Colors.yellow.shade600,
+                                    endIndent: 0),
+                                Container(
+                        
+                                  child: Column(
+                                    children: [
+                                        Text('check-out date'),
+                                      Text(c.formatDate(c.date),style: robotoBold,)
+                                    ],
+                                  ),
+                                )
                               ],
                             ),
                           ),
-                          VerticalDivider(
-                              thickness: 5,
-                              color: Colors.yellow.shade600,
-                              endIndent: 0),
-                          Container(
-
-                            child: Column(
-                              children: [
-                                  Text('check-out date'),
-                                Text('tue 22 Aug 2023',style: robotoBold,)
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
+                        );
+                      }
                     ),
                     Divider(
                       color: Colors.yellow.shade600,
@@ -135,19 +144,19 @@ class _StaysScreenState extends State<StaysScreen> {
                       color: Colors.yellow.shade600,
                       thickness: 5,
                     ),
-                    GetBuilder<HomeController>(
+                    GetBuilder<StaysController>(
                       builder: (c) {
                         return Container(
                           height: 35,
                         
-                        child: Column(
+                        child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Checkbox(value: c.checkbox,
                              onChanged:(value) {
                                c.checkboxchange();
                              },),
-                             Text("i'm travelling for work")
+                             Center(child: Text("i'm travelling for work"))
                           ],
                         ),
                         );
@@ -158,19 +167,25 @@ class _StaysScreenState extends State<StaysScreen> {
                       color: Colors.yellow.shade600,
                       thickness: 5,
                     ),
-                    Expanded(
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
                         child: Container(
-                      padding: EdgeInsets.all(4),
-                      child: Center(
+                          height: 45,
+                                           
+                                            color: Colors.blue,
+                                           
+                                            child: Center(
                         child: Text(
                           'Search',
                           style: robotoMedium.copyWith(
                               color: Theme.of(context).cardColor,
                               fontSize: Dimensions.fontSizeLarge),
                         ),
+                                            ),
+                                          ),
                       ),
-                      color: Colors.blue,
-                    )),
+                    ),
                   ],
                 ),
               ),
@@ -367,7 +382,7 @@ class _StaysScreenState extends State<StaysScreen> {
                     ),
                     SizedBox(
                       height: 60,
-                      child: GetBuilder<HomeController>(builder: (controller) {
+                      child: GetBuilder<StaysController>(builder: (controller) {
                         return ListView.separated(
                           separatorBuilder: (context, index) => SizedBox(),
                           itemCount: 6,
