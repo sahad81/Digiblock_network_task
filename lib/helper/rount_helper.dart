@@ -1,5 +1,5 @@
 import 'package:digiblock_network_task/screens/home/home.dart';
-import 'package:digiblock_network_task/screens/splash.dart';
+import 'package:digiblock_network_task/screens/splash/splash.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 class RoutHelper{

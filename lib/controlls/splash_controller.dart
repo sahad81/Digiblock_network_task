@@ -8,7 +8,7 @@ class SplashController extends GetxController implements GetxService {
 
 //add if check  loged or not
 
-  Get.toNamed(RoutHelper.home);
+  Get.offNamed(RoutHelper.home);
 
  }
 

@@ -505,7 +505,7 @@ class _FlightScreenState extends State<FlightScreen> {
                                           Center(
                                             child: Padding(
                                               padding:
-                                                  const EdgeInsets.all(8.0),
+                                                  const EdgeInsets.all(3.0),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -517,7 +517,7 @@ class _FlightScreenState extends State<FlightScreen> {
                                                     style: robotoBold,
                                                   ),
                                                   Text(
-                                                      'shortest flight time 17h 27 min'),
+                                                      'shortest flight time 17h 27 min',overflow: TextOverflow.ellipsis,maxLines: 1,),
                                                 ],
                                               ),
                                             ),
